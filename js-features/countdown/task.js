@@ -1,6 +1,8 @@
 const timerFunction = function () {
     const timer = document.getElementById("timer");
     if (timer.textContent === '00:00:00') {
+        const fileDownload = document.getElementById("fileDownload");
+        fileDownload.click();
         alert('Вы победили в конкурсе!');
         timer.textContent = '00:00:59';
     } else {
