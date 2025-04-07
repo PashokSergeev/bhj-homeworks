@@ -1,10 +1,15 @@
-const timerFunction = function (){
+const timerFunction = function () {
     const timer = document.getElementById("timer");
-    if (timer.textContent === '0') {
+    if (timer.textContent === '00:00:00') {
         alert('Вы победили в конкурсе!');
-        timer.textContent = 59;
-    }else{
-        timer.textContent -= 1;
+        timer.textContent = '00:00:59';
+    } else {
+        let newTimer = timer.textContent.slice(-2);
+        if (newTimer <= 10) {
+            timer.textContent = '00:00:0' + (newTimer - 1);
+        } else {
+            timer.textContent = '00:00:' + (newTimer - 1);
+        }
     }
 }
 
