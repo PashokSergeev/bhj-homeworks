@@ -6,4 +6,5 @@ cookie.onclick = () => {
     setTimeout(() => {
         cookie.width -= 20;
     }, 100);
+
 }
