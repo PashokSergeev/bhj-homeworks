@@ -5,6 +5,7 @@
 .has-tooltip {
   color: #000;
   background: yellow;
+  position: relative;
 }
 
 .has-tooltip:hover {
