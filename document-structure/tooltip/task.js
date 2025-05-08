@@ -2,14 +2,17 @@ const tooltips = document.getElementsByClassName('has-tooltip');
 for (const tooltip of tooltips) {
     tooltip.addEventListener('click', (e) => {
         e.preventDefault();
-        if (tooltip.childNodes.length < 2) {
+        const {x,y} = tooltip.getBoundingClientRect();
+        console.log(tooltip.nextElementSibling);
+        if (tooltip.nextElementSibling === null || !tooltip.nextElementSibling.classList.contains('tooltip')) {
             const tooltipEl = document.createElement('div')
             tooltipEl.classList.add('tooltip', 'tooltip_active');
             tooltipEl.textContent = tooltip.title;
-            tooltipEl.setAttribute('style', 'left: 0; top: 21px; position: absolute;width: max-content;');
-            tooltip.insertAdjacentElement("afterbegin", tooltipEl);
+
+            tooltipEl.setAttribute('style', `left: ${x}px; top: ${y+21}px; position: absolute; width: max-content; `);
+            tooltip.insertAdjacentElement("afterend", tooltipEl);
         } else {
-            tooltip.firstElementChild.classList.toggle('tooltip_active');
+            tooltip.nextElementSibling.classList.toggle('tooltip_active');
         }
     })
 }
